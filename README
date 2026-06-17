@@ -1,0 +1,31 @@
+miniFOAM/
+├── CMakeLists.txt              # プロジェクト全体のビルド設定 (Makeの進化版)
+│
+├── src/                        # 【心臓部】OpenFOAMライブラリ本体
+│   ├── fvMesh/                 # 空間・メッシュ管理
+│   │   ├── fvMesh.h
+│   │   └── fvMesh.cpp
+│   │
+│   ├── fields/                 # 物理量フィールド (T, P, Uなど)
+│   │   ├── volScalarField.h    # スカラー量クラス
+│   │   └── volVectorField.h    # ベクトル量クラス
+│   │
+│   ├── fvMatrix/               # 行列とソルバー
+│   │   ├── fvMatrix.h          # Ax=b を保持するクラス
+│   │   └── lduSolver.cpp       # CG法などの反復計算アルゴリズム
+│   │
+│   └── finiteVolume/           # 離散化の魔法 (fvm::, fvc::)
+│       ├── fvm.h               # 陰解法の行列組み立て (fvm::laplacian等)
+│       └── fvc.h               # 陽解法の値計算 (fvc::grad等)
+│
+├── applications/               # 【実行部】ライブラリを使って作ったソルバー
+│   ├── miniLaplacianFoam/      # 熱伝導だけを解くアプリ
+│   │   └── miniLaplacianFoam.cpp
+│   └── miniIcoFoam/            # 流体(ナビエ・ストークス)を解くアプリ
+│       └── miniIcoFoam.cpp
+│
+└── run/                        # 【実験室】計算を実行するケースフォルダ
+    └── cavity/                 # キャビティ流れのテストケース
+        ├── 0/                  # 初期条件 (T, P, Uの初期値ファイル)
+        ├── constant/           # 変わらないもの (物性値、メッシュ設定)
+        └── system/             # コントロール (dtや出力間隔の設定)
