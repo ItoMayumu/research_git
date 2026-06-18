@@ -14,6 +14,11 @@ const fvMesh& volScalarField::mesh() const {
     return mesh_;
 }
 
+
+const double& volScalarField::operator[](int i) const {
+    return internalField_[i];
+}
+
 int volScalarField::size() const {
     return internalField_.size();
 }

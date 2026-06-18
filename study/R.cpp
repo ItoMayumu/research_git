@@ -31,5 +31,17 @@ int vec(){
         {4, 5, 6},
         {7, 8, 9}
     };
+
+    // 宣言
+    vector<vector<int>> data2(3, vector<int>(3));
+    vector<vector<vector<int>>> data3(3, vector<vector<int>> (3, vector<int>(3)));
 }
 
+
+// 参照
+int  view(){
+    int a=3;
+    int &b = a; // 参照
+
+    
+}
