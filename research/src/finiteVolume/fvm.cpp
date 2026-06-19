@@ -35,39 +35,40 @@ fvMatrix laplacian(double k, volScalarField& psi) {
         int y = (i / Nx) % Ny;
         int z = i / Nxy;
 
-        double aC_val = 0.0; // 中心の係数（周りの係数の合計のマイナス値になる）
+        double aC_val = 0.0; // 中心の係数
 
         // 東 (X方向のプラス側)
         if (x + 1 < Nx) {
-            matrix.aE()[i] = cx;
-            aC_val -= cx;
+            matrix.aE()[i] = -cx; // ⬅️ マイナスにする
+            aC_val += cx;         // ⬅️ プラスにする
         }
         // 西 (X方向のマイナス側)
         if (x - 1 >= 0) {
-            matrix.aW()[i] = cx;
-            aC_val -= cx;
+            matrix.aW()[i] = -cx; // ⬅️ マイナスにする
+            aC_val += cx;         // ⬅️ プラスにする
         }
         // 北 (Y方向のプラス側)
         if (y + 1 < Ny) {
-            matrix.aN()[i] = cy;
-            aC_val -= cy;
+            matrix.aN()[i] = -cy; // ⬅️ マイナスにする
+            aC_val += cy;         // ⬅️ プラスにする
         }
         // 南 (Y方向のマイナス側)
         if (y - 1 >= 0) {
-            matrix.aS()[i] = cy;
-            aC_val -= cy;
+            matrix.aS()[i] = -cy; // ⬅️ マイナスにする
+            aC_val += cy;         // ⬅️ プラスにする
         }
         // 上 (Z方向のプラス側)
         if (z + 1 < Nz) {
-            matrix.aT()[i] = cz;
-            aC_val -= cz;
+            matrix.aT()[i] = -cz; // ⬅️ マイナスにする
+            aC_val += cz;         // ⬅️ プラスにする
         }
         // 下 (Z方向のマイナス側)
         if (z - 1 >= 0) {
-            matrix.aB()[i] = cz;
-            aC_val -= cz;
+            matrix.aB()[i] = -cz; // ⬅️ マイナスにする
+            aC_val += cz;         // ⬅️ プラスにする
         }
 
+        
         
         matrix.aC()[i] = aC_val;
     }
