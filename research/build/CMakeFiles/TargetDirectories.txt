@@ -1,0 +1,4 @@
+/home/mayumu/research/numerical_simulation/research/build/CMakeFiles/minifoam_lib.dir
+/home/mayumu/research/numerical_simulation/research/build/CMakeFiles/miniLaplacianFoam.dir
+/home/mayumu/research/numerical_simulation/research/build/CMakeFiles/edit_cache.dir
+/home/mayumu/research/numerical_simulation/research/build/CMakeFiles/rebuild_cache.dir
