@@ -1,31 +1,28 @@
 miniFOAM/
-├── CMakeLists.txt              # プロジェクト全体のビルド設定 (Makeの進化版)
+├── CMakeLists.txt
+├── src/
+│   ├── fvMesh/
+│   │   ├── fvMesh.h           # 直方体（デカルト格子）用
+│   │   ├── fvMesh.cpp
+│   │   ├── fvCylindricalMesh.h   # 🌟【追加】円筒座標系メッシュの設計図
+│   │   └── fvCylindricalMesh.cpp # 🌟【追加】円筒座標系メッシュのレシピ
+│   │
+│   ├── fields/
+│   │   ├── volScalarField.h
+│   │   ├── volScalarField.cpp
+│   │   ├── volVectorField.h   # 🌟【今回実装】ベクトル量クラス（速度U用）
+│   │   └── volVectorField.cpp # 🌟【今回実装】ベクトル量クラス
+│   │
+│   ├── fvMatrix/ ... (共通で使用)
+│   └── finiteVolume/ ... (ここに円筒座標用の数式を少しずつ追加)
 │
-├── src/                        # 【心臓部】OpenFOAMライブラリ本体
-│   ├── fvMesh/                 # 空間・メッシュ管理
-│   │   ├── fvMesh.h
-│   │   └── fvMesh.cpp
-│   │
-│   ├── fields/                 # 物理量フィールド (T, P, Uなど)
-│   │   ├── volScalarField.h    # スカラー量クラス
-│   │   └── volVectorField.h    # ベクトル量クラス
-│   │
-│   ├── fvMatrix/               # 行列とソルバー
-│   │   ├── fvMatrix.h          # Ax=b を保持するクラス
-│   │   └── lduSolver.cpp       # CG法などの反復計算アルゴリズム
-│   │
-│   └── finiteVolume/           # 離散化の魔法 (fvm::, fvc::)
-│       ├── fvm.h               # 陰解法の行列組み立て (fvm::laplacian等)
-│       └── fvc.h               # 陽解法の値計算 (fvc::grad等)
-│
-├── applications/               # 【実行部】ライブラリを使って作ったソルバー
-│   ├── miniLaplacianFoam/      # 熱伝導だけを解くアプリ
+├── applications/
+│   ├── miniLaplacianFoam/     # 🔒 今までの熱伝導アプリ（そのまま残す！）
 │   │   └── miniLaplacianFoam.cpp
-│   └── miniIcoFoam/            # 流体(ナビエ・ストークス)を解くアプリ
-│       └── miniIcoFoam.cpp
+│   │
+│   └── miniPipeFlowFoam/      # 🌟【新設】円筒座標系・単相層流ソルバー
+│       └── miniPipeFlowFoam.cpp
 │
-└── run/                        # 【実験室】計算を実行するケースフォルダ
-    └── cavity/                 # キャビティ流れのテストケース
-        ├── 0/                  # 初期条件 (T, P, Uの初期値ファイル)
-        ├── constant/           # 変わらないもの (物性値、メッシュ設定)
-        └── system/             # コントロール (dtや出力間隔の設定)
+└── run/
+    ├── cavity/                # 直方体用のテストケース
+    └── pipeFlow/              # 🌟【新設】パイプ流のテストケース
