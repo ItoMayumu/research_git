@@ -51,5 +51,7 @@ int main() {
     int edge_idx = mesh.index(0, 0, 0);
     std::cout << "Edge (0,0,0)          : " << T[edge_idx] << " C" << std::endl;
 
+    T.writeVTK("Temperature_result.vtk");
+    
     return 0;
 }

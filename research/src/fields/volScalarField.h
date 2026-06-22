@@ -22,6 +22,8 @@ public:
     const double& operator[](int i) const;
 
     volScalarField& operator=(double value);
+
+    void writeVTK(const std::string& filename) const;
 };
 
 #endif // VOLSCALARFIELD_H
