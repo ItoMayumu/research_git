@@ -54,30 +54,22 @@ void volScalarField::writeVTK(const std::string& filename) const {
     double dy = mesh_.dy();
     double dz = mesh_.dz();
 
-    // 1. VTKファイルのヘッダー
     os << "# vtk DataFile Version 3.0\n";
     os << "miniFOAM volScalarField Output: " << name_ << "\n";
     os << "ASCII\n";
     os << "DATASET STRUCTURED_POINTS\n";
 
-    // 2. 空間のマス目の数
     os << "DIMENSIONS " << Nx << " " << Ny << " " << Nz << "\n";
-    
-    // 3. 原点と1マスのサイズ
     os << "ORIGIN 0.0 0.0 0.0\n";
     os << "SPACING " << dx << " " << dy << " " << dz << "\n";
 
-    // 4. 物理量データの合図
     os << "POINT_DATA " << size() << "\n";
     os << "SCALARS " << name_ << " double 1\n";
     os << "LOOKUP_TABLE default\n";
 
-    // 5. 全マスのデータを書き出す
     for (int i = 0; i < size(); ++i) {
         os << internalField_[i] << "\n";
     }
 
     std::cout << "Successfully saved VTK file: " << filename << std::endl;
 }
-
-
