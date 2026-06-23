@@ -18,25 +18,20 @@ int main() {
 
     fvCylindricalMesh mesh(Nr, Ntheta, Nx, R, Theta, Lx);
 
-    // 座標を書き出すファイルを開く
     std::ofstream os("mesh_points.txt");
     
-    // 全マスをループして、各マスの中心の「3次元デカルト座標(X,Y,Z)」を計算して保存
     for (int ix = 0; ix < mesh.Nx(); ++ix) {
         for (int itheta = 0; itheta < mesh.Ntheta(); ++itheta) {
             for (int ir = 0; ir < mesh.Nr(); ++ir) {
                 
-                // 円筒座標におけるセルの中心位置 (r, theta, x) を計算
                 double r     = (ir + 0.5) * mesh.dr();
                 double theta = (itheta + 0.5) * mesh.dtheta();
                 double x     = ix * mesh.dx();
 
-                // 🌟 Python(Matplotlib)で描画できるように、なじみのあるX, Y, Z座標に変換！
                 double abs_x = x;
                 double abs_y = r * std::cos(theta);
                 double abs_z = r * std::sin(theta);
 
-                // ファイルに 1行ずつスペース区切りで保存
                 os << abs_x << " " << abs_y << " " << abs_z << "\n";
             }
         }
