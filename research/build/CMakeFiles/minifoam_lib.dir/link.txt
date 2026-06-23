@@ -1,2 +1,0 @@
-/usr/bin/ar qc libminifoam_lib.a CMakeFiles/minifoam_lib.dir/src/fvMesh/fvMesh.cpp.o CMakeFiles/minifoam_lib.dir/src/fields/volScalarField.cpp.o CMakeFiles/minifoam_lib.dir/src/fvMatrix/fvMatrix.cpp.o CMakeFiles/minifoam_lib.dir/src/finiteVolume/fvm.cpp.o
-/usr/bin/ranlib libminifoam_lib.a

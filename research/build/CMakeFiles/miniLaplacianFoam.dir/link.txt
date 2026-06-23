@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/miniLaplacianFoam.dir/applications/miniLaplacianFoam.cpp.o -o miniLaplacianFoam  libminifoam_lib.a 
+/usr/bin/c++ CMakeFiles/miniLaplacianFoam.dir/applications/miniLaplacianFoam.cpp.o CMakeFiles/miniLaplacianFoam.dir/src/fvMesh/fvMesh.cpp.o CMakeFiles/miniLaplacianFoam.dir/src/fields/volScalarField.cpp.o -o miniLaplacianFoam 

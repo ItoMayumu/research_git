@@ -1,24 +1,25 @@
-# 1. CMakeの最小バージョンとプロジェクト名
 cmake_minimum_required(VERSION 3.10)
-project(miniFOAM)
+project(miniFOAM CXX)
 
-# 2. C++のバージョン指定（C++11以上を指定しておくと安全です）
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# 3. ライブラリ（3種の神器＋fvm）のソースファイルをまとめる
-set(MINIFOAM_SRC
+# インクルードパスの設定（src フォルダの中を見に行く）
+include_directories(src)
+
+# -------------------------------------------------------------
+# 1. 既存の熱伝導アプリ (miniLaplacianFoam)
+# -------------------------------------------------------------
+add_executable(miniLaplacianFoam 
+    applications/miniLaplacianFoam.cpp  # 💡 実際の配置に合わせて階層を修正
     src/fvMesh/fvMesh.cpp
     src/fields/volScalarField.cpp
-    src/fvMatrix/fvMatrix.cpp
-    src/finiteVolume/fvm.cpp
 )
 
-# 4. 上記のソースから「libminifoam」というライブラリ（部品の塊）を作る
-add_library(minifoam_lib ${MINIFOAM_SRC})
-
-# 5. メインプログラム（実行ファイル）を作る
-add_executable(miniLaplacianFoam applications/miniLaplacianFoam.cpp)
-
-# 6. メインプログラムに、さっき作ったライブラリ（部品）を合体（リンク）させる
-target_link_libraries(miniLaplacianFoam minifoam_lib)
+# -------------------------------------------------------------
+# 2. 新しいパイプ流メッシュアプリ (miniPipeFlowFoam)
+# -------------------------------------------------------------
+add_executable(miniPipeFlowFoam 
+    applications/miniPipeFlowFoam.cpp   # 💡 実際の配置に合わせて階層を修正
+    src/fvMesh/fvCylindricalMesh.cpp
+)

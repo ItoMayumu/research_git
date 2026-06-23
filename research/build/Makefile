@@ -117,19 +117,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named minifoam_lib
-
-# Build rule for target.
-minifoam_lib: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 minifoam_lib
-.PHONY : minifoam_lib
-
-# fast build rule for target.
-minifoam_lib/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minifoam_lib.dir/build.make CMakeFiles/minifoam_lib.dir/build
-.PHONY : minifoam_lib/fast
-
-#=============================================================================
 # Target rules for targets named miniLaplacianFoam
 
 # Build rule for target.
@@ -141,6 +128,19 @@ miniLaplacianFoam: cmake_check_build_system
 miniLaplacianFoam/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/miniLaplacianFoam.dir/build.make CMakeFiles/miniLaplacianFoam.dir/build
 .PHONY : miniLaplacianFoam/fast
+
+#=============================================================================
+# Target rules for targets named miniPipeFlowFoam
+
+# Build rule for target.
+miniPipeFlowFoam: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 miniPipeFlowFoam
+.PHONY : miniPipeFlowFoam
+
+# fast build rule for target.
+miniPipeFlowFoam/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miniPipeFlowFoam.dir/build.make CMakeFiles/miniPipeFlowFoam.dir/build
+.PHONY : miniPipeFlowFoam/fast
 
 applications/miniLaplacianFoam.o: applications/miniLaplacianFoam.cpp.o
 .PHONY : applications/miniLaplacianFoam.o
@@ -166,12 +166,36 @@ applications/miniLaplacianFoam.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/miniLaplacianFoam.dir/build.make CMakeFiles/miniLaplacianFoam.dir/applications/miniLaplacianFoam.cpp.s
 .PHONY : applications/miniLaplacianFoam.cpp.s
 
+applications/miniPipeFlowFoam.o: applications/miniPipeFlowFoam.cpp.o
+.PHONY : applications/miniPipeFlowFoam.o
+
+# target to build an object file
+applications/miniPipeFlowFoam.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miniPipeFlowFoam.dir/build.make CMakeFiles/miniPipeFlowFoam.dir/applications/miniPipeFlowFoam.cpp.o
+.PHONY : applications/miniPipeFlowFoam.cpp.o
+
+applications/miniPipeFlowFoam.i: applications/miniPipeFlowFoam.cpp.i
+.PHONY : applications/miniPipeFlowFoam.i
+
+# target to preprocess a source file
+applications/miniPipeFlowFoam.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miniPipeFlowFoam.dir/build.make CMakeFiles/miniPipeFlowFoam.dir/applications/miniPipeFlowFoam.cpp.i
+.PHONY : applications/miniPipeFlowFoam.cpp.i
+
+applications/miniPipeFlowFoam.s: applications/miniPipeFlowFoam.cpp.s
+.PHONY : applications/miniPipeFlowFoam.s
+
+# target to generate assembly for a file
+applications/miniPipeFlowFoam.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miniPipeFlowFoam.dir/build.make CMakeFiles/miniPipeFlowFoam.dir/applications/miniPipeFlowFoam.cpp.s
+.PHONY : applications/miniPipeFlowFoam.cpp.s
+
 src/fields/volScalarField.o: src/fields/volScalarField.cpp.o
 .PHONY : src/fields/volScalarField.o
 
 # target to build an object file
 src/fields/volScalarField.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minifoam_lib.dir/build.make CMakeFiles/minifoam_lib.dir/src/fields/volScalarField.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miniLaplacianFoam.dir/build.make CMakeFiles/miniLaplacianFoam.dir/src/fields/volScalarField.cpp.o
 .PHONY : src/fields/volScalarField.cpp.o
 
 src/fields/volScalarField.i: src/fields/volScalarField.cpp.i
@@ -179,7 +203,7 @@ src/fields/volScalarField.i: src/fields/volScalarField.cpp.i
 
 # target to preprocess a source file
 src/fields/volScalarField.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minifoam_lib.dir/build.make CMakeFiles/minifoam_lib.dir/src/fields/volScalarField.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miniLaplacianFoam.dir/build.make CMakeFiles/miniLaplacianFoam.dir/src/fields/volScalarField.cpp.i
 .PHONY : src/fields/volScalarField.cpp.i
 
 src/fields/volScalarField.s: src/fields/volScalarField.cpp.s
@@ -187,63 +211,39 @@ src/fields/volScalarField.s: src/fields/volScalarField.cpp.s
 
 # target to generate assembly for a file
 src/fields/volScalarField.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minifoam_lib.dir/build.make CMakeFiles/minifoam_lib.dir/src/fields/volScalarField.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miniLaplacianFoam.dir/build.make CMakeFiles/miniLaplacianFoam.dir/src/fields/volScalarField.cpp.s
 .PHONY : src/fields/volScalarField.cpp.s
 
-src/finiteVolume/fvm.o: src/finiteVolume/fvm.cpp.o
-.PHONY : src/finiteVolume/fvm.o
+src/fvMesh/fvCylindricalMesh.o: src/fvMesh/fvCylindricalMesh.cpp.o
+.PHONY : src/fvMesh/fvCylindricalMesh.o
 
 # target to build an object file
-src/finiteVolume/fvm.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minifoam_lib.dir/build.make CMakeFiles/minifoam_lib.dir/src/finiteVolume/fvm.cpp.o
-.PHONY : src/finiteVolume/fvm.cpp.o
+src/fvMesh/fvCylindricalMesh.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miniPipeFlowFoam.dir/build.make CMakeFiles/miniPipeFlowFoam.dir/src/fvMesh/fvCylindricalMesh.cpp.o
+.PHONY : src/fvMesh/fvCylindricalMesh.cpp.o
 
-src/finiteVolume/fvm.i: src/finiteVolume/fvm.cpp.i
-.PHONY : src/finiteVolume/fvm.i
-
-# target to preprocess a source file
-src/finiteVolume/fvm.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minifoam_lib.dir/build.make CMakeFiles/minifoam_lib.dir/src/finiteVolume/fvm.cpp.i
-.PHONY : src/finiteVolume/fvm.cpp.i
-
-src/finiteVolume/fvm.s: src/finiteVolume/fvm.cpp.s
-.PHONY : src/finiteVolume/fvm.s
-
-# target to generate assembly for a file
-src/finiteVolume/fvm.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minifoam_lib.dir/build.make CMakeFiles/minifoam_lib.dir/src/finiteVolume/fvm.cpp.s
-.PHONY : src/finiteVolume/fvm.cpp.s
-
-src/fvMatrix/fvMatrix.o: src/fvMatrix/fvMatrix.cpp.o
-.PHONY : src/fvMatrix/fvMatrix.o
-
-# target to build an object file
-src/fvMatrix/fvMatrix.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minifoam_lib.dir/build.make CMakeFiles/minifoam_lib.dir/src/fvMatrix/fvMatrix.cpp.o
-.PHONY : src/fvMatrix/fvMatrix.cpp.o
-
-src/fvMatrix/fvMatrix.i: src/fvMatrix/fvMatrix.cpp.i
-.PHONY : src/fvMatrix/fvMatrix.i
+src/fvMesh/fvCylindricalMesh.i: src/fvMesh/fvCylindricalMesh.cpp.i
+.PHONY : src/fvMesh/fvCylindricalMesh.i
 
 # target to preprocess a source file
-src/fvMatrix/fvMatrix.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minifoam_lib.dir/build.make CMakeFiles/minifoam_lib.dir/src/fvMatrix/fvMatrix.cpp.i
-.PHONY : src/fvMatrix/fvMatrix.cpp.i
+src/fvMesh/fvCylindricalMesh.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miniPipeFlowFoam.dir/build.make CMakeFiles/miniPipeFlowFoam.dir/src/fvMesh/fvCylindricalMesh.cpp.i
+.PHONY : src/fvMesh/fvCylindricalMesh.cpp.i
 
-src/fvMatrix/fvMatrix.s: src/fvMatrix/fvMatrix.cpp.s
-.PHONY : src/fvMatrix/fvMatrix.s
+src/fvMesh/fvCylindricalMesh.s: src/fvMesh/fvCylindricalMesh.cpp.s
+.PHONY : src/fvMesh/fvCylindricalMesh.s
 
 # target to generate assembly for a file
-src/fvMatrix/fvMatrix.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minifoam_lib.dir/build.make CMakeFiles/minifoam_lib.dir/src/fvMatrix/fvMatrix.cpp.s
-.PHONY : src/fvMatrix/fvMatrix.cpp.s
+src/fvMesh/fvCylindricalMesh.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miniPipeFlowFoam.dir/build.make CMakeFiles/miniPipeFlowFoam.dir/src/fvMesh/fvCylindricalMesh.cpp.s
+.PHONY : src/fvMesh/fvCylindricalMesh.cpp.s
 
 src/fvMesh/fvMesh.o: src/fvMesh/fvMesh.cpp.o
 .PHONY : src/fvMesh/fvMesh.o
 
 # target to build an object file
 src/fvMesh/fvMesh.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minifoam_lib.dir/build.make CMakeFiles/minifoam_lib.dir/src/fvMesh/fvMesh.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miniLaplacianFoam.dir/build.make CMakeFiles/miniLaplacianFoam.dir/src/fvMesh/fvMesh.cpp.o
 .PHONY : src/fvMesh/fvMesh.cpp.o
 
 src/fvMesh/fvMesh.i: src/fvMesh/fvMesh.cpp.i
@@ -251,7 +251,7 @@ src/fvMesh/fvMesh.i: src/fvMesh/fvMesh.cpp.i
 
 # target to preprocess a source file
 src/fvMesh/fvMesh.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minifoam_lib.dir/build.make CMakeFiles/minifoam_lib.dir/src/fvMesh/fvMesh.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miniLaplacianFoam.dir/build.make CMakeFiles/miniLaplacianFoam.dir/src/fvMesh/fvMesh.cpp.i
 .PHONY : src/fvMesh/fvMesh.cpp.i
 
 src/fvMesh/fvMesh.s: src/fvMesh/fvMesh.cpp.s
@@ -259,7 +259,7 @@ src/fvMesh/fvMesh.s: src/fvMesh/fvMesh.cpp.s
 
 # target to generate assembly for a file
 src/fvMesh/fvMesh.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minifoam_lib.dir/build.make CMakeFiles/minifoam_lib.dir/src/fvMesh/fvMesh.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miniLaplacianFoam.dir/build.make CMakeFiles/miniLaplacianFoam.dir/src/fvMesh/fvMesh.cpp.s
 .PHONY : src/fvMesh/fvMesh.cpp.s
 
 # Help Target
@@ -271,19 +271,19 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... miniLaplacianFoam"
-	@echo "... minifoam_lib"
+	@echo "... miniPipeFlowFoam"
 	@echo "... applications/miniLaplacianFoam.o"
 	@echo "... applications/miniLaplacianFoam.i"
 	@echo "... applications/miniLaplacianFoam.s"
+	@echo "... applications/miniPipeFlowFoam.o"
+	@echo "... applications/miniPipeFlowFoam.i"
+	@echo "... applications/miniPipeFlowFoam.s"
 	@echo "... src/fields/volScalarField.o"
 	@echo "... src/fields/volScalarField.i"
 	@echo "... src/fields/volScalarField.s"
-	@echo "... src/finiteVolume/fvm.o"
-	@echo "... src/finiteVolume/fvm.i"
-	@echo "... src/finiteVolume/fvm.s"
-	@echo "... src/fvMatrix/fvMatrix.o"
-	@echo "... src/fvMatrix/fvMatrix.i"
-	@echo "... src/fvMatrix/fvMatrix.s"
+	@echo "... src/fvMesh/fvCylindricalMesh.o"
+	@echo "... src/fvMesh/fvCylindricalMesh.i"
+	@echo "... src/fvMesh/fvCylindricalMesh.s"
 	@echo "... src/fvMesh/fvMesh.o"
 	@echo "... src/fvMesh/fvMesh.i"
 	@echo "... src/fvMesh/fvMesh.s"
