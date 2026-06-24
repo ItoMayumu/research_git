@@ -24,7 +24,7 @@ struct RadiationPixel{
 // 引数: RadiationPixel の vector を「定数参照渡し（コピーなし＆安全）」で受け取る
 // 戻り値: double (平均強度)
 // ==========================================
-double calcAverageIntensity(const std::vector<RadiationPixel> pixels) {
+double calcAverageIntensity(const std::vector<RadiationPixel>& pixels) {
     double sum = 0.0;
     
     // ループで全ピクセルの intensity を足し合わせる
