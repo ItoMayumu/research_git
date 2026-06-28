@@ -1,5 +1,32 @@
+cat << 'EOF' > .gitignore
+# === Pythonの仮想環境やキャッシュ ===
 venv/
+**/venv/
+.venv/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+
+# === 実験データ・解析データ ===
 data/
+research/data/
+**/data/
+
+# === OpenFOAM用の強力な無視リスト ===
+openfoam/**/platforms/
+openfoam/**/lnInclude/
+openfoam/**/Make/linux*
+openfoam/**/*.dep
+openfoam/**/*.log
+openfoam/**/.foam
+
+# OpenFOAMの計算結果（タイムステップフォルダ）をすべてスルー
+openfoam/**/*/[1-9]*/
+openfoam/**/*/0.*/
+openfoam/**/[-1-9]*/
+openfoam/**/postProcessing/
+openfoam/**/VTK/
+
+.DS_Store
+.vscode/
+EOF
