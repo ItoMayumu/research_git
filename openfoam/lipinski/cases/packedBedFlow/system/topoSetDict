@@ -1,0 +1,38 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    // 1. テンポラリのセルセットをクリア
+    {
+        name    porousCells;
+        type    cellSet;
+        action  clear;
+    }
+
+    // 2. メートル単位（Z = 0.2m 〜 0.9m）でボックスを指定
+    // 円管の半径が 0.025m なので、XとYはそれを確実に包むように -0.03 〜 0.03m にします
+    {
+        name    porousCells;
+        type    cellSet;
+        action  add;
+        source  boxToCell;
+        box     (-0.03 -0.03 0.2) (0.03 0.03 0.9);
+    }
+
+    // 3. 抽出したセルから cellZone を新規作成
+    {
+        name    porosity1;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        set     porousCells;
+    }
+);
