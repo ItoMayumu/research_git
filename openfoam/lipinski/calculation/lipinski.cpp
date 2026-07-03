@@ -30,9 +30,9 @@ int main(){
     double rho_G = 1.205;
     double mu_G = 1.82e-5;  
 
-    double alpha = 0.080;       // 初期仮定値
-    double tolerance = 1e-6;  // 許容誤差 (Pa/m 単位での残差目標値)
-    int max_iterations = 100; // 最大ループ回数
+    double alpha = 0.080;       
+    double tolerance = 1e-6; 
+    int max_iterations = 100; 
     double d_alpha = 1e-5;
 
     bool converged = false;

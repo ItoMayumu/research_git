@@ -8,7 +8,7 @@ struct PorousCoeffs {
 };
 
 int main() {
-    double epsilon = 0.38; // 空隙率
+    double epsilon = 0.3731; // 空隙率
     double alpha = 0.08;   // ボイド率
     double dp = 0.005;     // 粒子径 [m]
 
@@ -32,7 +32,7 @@ int main() {
     gas.D = 150.0 * std::pow(1.0 - epsilon, 2) / (denom_D_G * std::pow(dp, 2));
     gas.F = 3.5 * (1.0 - epsilon) / (denom_F_G * dp);
 
-    // 結果出力
+    
     std::cout << std::scientific << std::setprecision(2);
     std::cout << "【修正版】水（液相）の係数" << std::endl;
     std::cout << "  D_L = " << liquid.D << " [1/m^2]" << std::endl;
