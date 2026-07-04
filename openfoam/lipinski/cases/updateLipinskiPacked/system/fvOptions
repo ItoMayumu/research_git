@@ -1,0 +1,82 @@
+
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+porosity_air
+{
+    type            explicitPorositySource;
+    active          true;
+
+    explicitPorositySourceCoeffs
+    {
+        type            DarcyForchheimer;
+        
+        selectionMode   cellZone;
+        cellZone        porosity1;
+
+        U               U.air;
+        rho             thermo:rho;
+
+        coordinateSystem
+        {
+            type            cartesian;
+            origin          (0 0 0);
+            rotation
+            {
+                type            axes;
+                e1              (1 0 0);
+                e2              (0 1 0);
+            }
+        }
+
+         d  (7.3459e+09 7.3459e+09 7.3459e+09);
+    f  (1.0883e+05 1.0883e+05 1.0883e+05);
+  }
+}
+
+porosity_water
+{
+    type            explicitPorositySource;
+    active          true;
+
+    explicitPorositySourceCoeffs
+    {
+        type            DarcyForchheimer;
+        
+        selectionMode   cellZone;
+        cellZone        porosity1;
+
+        U               U.water;
+        rho             thermo:rho;
+
+        coordinateSystem
+        {
+            type            cartesian;
+            origin          (0 0 0);
+            rotation
+            {
+                type            axes;
+                e1              (1 0 0);
+                e2              (0 1 0);
+            }
+        }
+
+        d    (5.5546e+07 5.5546e+07 5.5546e+07);
+        f    (9.4634e+03 9.4634e+03 9.4634e+03);
+    }
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
