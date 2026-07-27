@@ -4,9 +4,7 @@
 #include <stdexcept>
 #include <fstream>
 
-// -----------------------------
-// 流体・管路の物性値
-// -----------------------------
+
 struct FluidParams {
     double rho_f;
     double rho_g;
@@ -30,7 +28,7 @@ double computeA(const FluidParams& p) {
     return std::pow(val, 1.0 / 18.0);
 }
 
-// F(jf, jg) = LHS - RHS
+
 double transitionEquation(double jf, double jg, const FluidParams& p) {
     double C0 = computeC0(p);
     double b  = computeB(p);
@@ -50,9 +48,6 @@ double transitionEquation(double jf, double jg, const FluidParams& p) {
     return LHS - RHS;
 }
 
-// -----------------------------
-// jg方向に対数刻みでスキャンし、符号反転する区間を自動で探す
-// -----------------------------
 bool findBracket(double jf, const FluidParams& p,
                   double jg_min, double jg_max, int nPoints,
                   double& jg_lo, double& jg_hi)
@@ -79,9 +74,7 @@ bool findBracket(double jf, const FluidParams& p,
     return false;
 }
 
-// -----------------------------
-// 二分法でjgを求める(jfを与える)
-// -----------------------------
+
 double solveJg(double jf, const FluidParams& p,
                double jg_min = 1e-4, double jg_max = 1e3,
                int scanPoints = 400,
@@ -114,9 +107,8 @@ double solveJg(double jf, const FluidParams& p,
     return jg_mid;
 }
 
-// -----------------------------
-// メイン: jf = 0.01 ~ 10 [m/s] を走査
-// -----------------------------
+
+
 int main() {
     FluidParams p;
     p.rho_f = 1000.0;   // 水
@@ -126,7 +118,7 @@ int main() {
 
     std::cout << "jf [m/s]\tjg_transition [m/s]\n";
 
-    // jf = 0.01 ~ 10 を対数刻みで走査(例:30点)
+    
     const int N = 30;
     double jf_min = 0.01;
     double jf_max = 10.0;
