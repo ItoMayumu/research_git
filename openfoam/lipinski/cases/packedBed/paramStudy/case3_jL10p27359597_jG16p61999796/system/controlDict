@@ -16,9 +16,7 @@ FoamFile
 
 application     myTwoPhaseEulerFoam;
 
-startFrom       startTime;
-
-startTime       0.500521;
+startFrom       latestTime;
 
 stopAt          endTime;
 

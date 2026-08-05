@@ -20,8 +20,8 @@ double calculateResidual(double alpha, double j_L, double j_G, double epsilon, d
                             return grad_P_L - grad_P_G;
                         }
 int main(){
-    double j_L = 0.104;
-    double j_G = 0.014;
+    double j_L = 0.0990;
+    double j_G = 0.07191;
     double epsilon = 0.38;
     double d_p = 0.005;
     double g = 9.81;
@@ -30,7 +30,7 @@ int main(){
     double rho_G = 1.205;
     double mu_G = 1.82e-5;  
 
-    double alpha = 0.080;       
+    double alpha = 0.2276;       
     double tolerance = 1e-6; 
     int max_iterations = 100; 
     double d_alpha = 1e-5;
