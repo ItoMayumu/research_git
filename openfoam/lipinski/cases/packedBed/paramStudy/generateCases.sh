@@ -17,6 +17,7 @@
 # Mesh is shared across cases (symlinked from ../standard), so blockMesh /
 # topoSet do not need to be re-run per case.
 
+#conditions.csvに書かれた内容のケースディレクトリを作成し、#各ケースディレクトリ内のU.air, U.water, alpha.air, fvOptionsを#conditions.csvの内容に応じて書き換えるスクリプト
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

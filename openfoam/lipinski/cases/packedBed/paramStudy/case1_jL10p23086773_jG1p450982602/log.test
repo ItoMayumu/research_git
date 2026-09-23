@@ -1,0 +1,1944 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2412                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _b8cf4d35-20260127 OPENFOAM=2412 patch=260127 version=2412
+Arch   : "LSB;label=32;scalar=64"
+Exec   : myTwoPhaseEulerFoam
+Date   : Aug 07 2026
+Time   : 16:58:17
+Host   : mayumu
+PID    : 357935
+I/O    : uncollated
+Case   : /home/mayumu/research/numerical_simulation/openfoam/lipinski/cases/packedBed/paramStudy/case1_jL10p23086773_jG1p450982602
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+PIMPLE: no residual control data found. Calculations will employ 3 corrector loops
+
+
+Reading g
+
+Reading hRef
+Creating twoPhaseSystem
+
+Selecting thermodynamics package 
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState perfectGas;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+Calculating face flux field phi.air
+Selecting diameterModel for phase air: isothermal
+Selecting turbulence model type laminar
+Selecting laminar stress model Stokes
+Selecting thermodynamics package 
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          eConst;
+    equationOfState perfectFluid;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+Calculating face flux field phi.water
+Selecting diameterModel for phase water: constant
+Selecting turbulence model type laminar
+Selecting laminar stress model Stokes
+Selecting default blending method: linear
+Selecting aspectRatioModel for (air in water): constant
+Selecting aspectRatioModel for (water in air): constant
+Selecting dragModel for (air and water): segregated
+Selecting swarmCorrection for (air and water): none
+Selecting dragModel for (air in water): SchillerNaumann
+Selecting swarmCorrection for (air in water): none
+Selecting dragModel for (water in air): SchillerNaumann
+Selecting swarmCorrection for (water in air): none
+Selecting virtualMassModel for (air in water): constantCoefficient
+Selecting virtualMassModel for (water in air): constantCoefficient
+Selecting heatTransferModel for (air in water): RanzMarshall
+Selecting heatTransferModel for (water in air): RanzMarshall
+Calculating field g.h
+
+Reading field p_rgh
+
+Creating field dpdt
+
+Creating field kinetic energy K
+
+No MRF models present
+
+Creating finite volume options from "system/fvOptions"
+
+Selecting finite volume options type explicitPorositySource
+    Source: porosity_air
+    - selecting cells using cellZones (porosity1)
+    - selected 118125 cell(s) with volume 0.00137194
+Porosity region porosity_air:
+    selecting model: DarcyForchheimer
+    creating porous zone: porosity1
+    origin: (0 0 0) e1: (1 0 0) e2: (0 1 0)
+    local bounds: (0.0499315 0.0499315 0.7)
+
+Selecting finite volume options type explicitPorositySource
+    Source: porosity_water
+    - selecting cells using cellZones (porosity1)
+    - selected 118125 cell(s) with volume 0.00137194
+Porosity region porosity_water:
+    selecting model: DarcyForchheimer
+    creating porous zone: porosity1
+    origin: (0 0 0) e1: (1 0 0) e2: (0 1 0)
+    local bounds: (0.0499315 0.0499315 0.7)
+
+Courant Number mean: 6.56644e-06 max: 0.000876142
+Max Ur Courant Number = 0
+Duplicate entry constant in runtime table diameterModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d0e77) [0x771c31ed0e77]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry isothermal in runtime table diameterModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d0f69) [0x771c31ed0f69]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry none in runtime table blendingMethod
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d2f27) [0x771c31ed2f27]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry linear in runtime table blendingMethod
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d3019) [0x771c31ed3019]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry hyperbolic in runtime table blendingMethod
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d3109) [0x771c31ed3109]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry constant in runtime table aspectRatioModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d3507) [0x771c31ed3507]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry Tomiyama in runtime table aspectRatioModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d35f9) [0x771c31ed35f9]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry VakhrushevEfremov in runtime table aspectRatioModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d36e9) [0x771c31ed36e9]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry Wellek in runtime table aspectRatioModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d37d9) [0x771c31ed37d9]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry segregated in runtime table dragModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d3d99) [0x771c31ed3d99]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry Ergun in runtime table dragModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d3e89) [0x771c31ed3e89]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry Gibilaro in runtime table dragModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d3f79) [0x771c31ed3f79]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry GidaspowErgunWenYu in runtime table dragModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d4069) [0x771c31ed4069]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry GidaspowSchillerNaumann in runtime table dragModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d4159) [0x771c31ed4159]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry Lain in runtime table dragModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d4249) [0x771c31ed4249]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry SchillerNaumann in runtime table dragModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d4339) [0x771c31ed4339]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry SyamlalOBrien in runtime table dragModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d4429) [0x771c31ed4429]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry TomiyamaCorrelated in runtime table dragModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d4519) [0x771c31ed4519]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry TomiyamaAnalytic in runtime table dragModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d4609) [0x771c31ed4609]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry WenYu in runtime table dragModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d48d9) [0x771c31ed48d9]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry IshiiZuber in runtime table dragModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d49c9) [0x771c31ed49c9]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry none in runtime table liftModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d4f89) [0x771c31ed4f89]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry constantCoefficient in runtime table liftModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d5087) [0x771c31ed5087]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry Moraga in runtime table liftModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d5179) [0x771c31ed5179]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry LegendreMagnaudet in runtime table liftModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d5269) [0x771c31ed5269]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry Tomiyama in runtime table liftModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d5359) [0x771c31ed5359]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry RanzMarshall in runtime table heatTransferModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d5a19) [0x771c31ed5a19]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry spherical in runtime table heatTransferModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d5b09) [0x771c31ed5b09]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry none in runtime table swarmCorrection
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d6397) [0x771c31ed6397]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry Tomiyama in runtime table swarmCorrection
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d6489) [0x771c31ed6489]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry none in runtime table turbulentDispersionModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d6999) [0x771c31ed6999]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry constantCoefficient in runtime table turbulentDispersionModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d6a97) [0x771c31ed6a97]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry Burns in runtime table turbulentDispersionModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d6b89) [0x771c31ed6b89]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry Gosman in runtime table turbulentDispersionModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d6c79) [0x771c31ed6c79]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry LopezDeBertodano in runtime table turbulentDispersionModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d6d77) [0x771c31ed6d77]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry none in runtime table virtualMassModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d7229) [0x771c31ed7229]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry constantCoefficient in runtime table virtualMassModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d7327) [0x771c31ed7327]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry Lamb in runtime table virtualMassModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d7419) [0x771c31ed7419]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry none in runtime table wallLubricationModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d8079) [0x771c31ed8079]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry Antal in runtime table wallLubricationModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d8169) [0x771c31ed8169]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry Frank in runtime table wallLubricationModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d8259) [0x771c31ed8259]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry Tomiyama in runtime table wallLubricationModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2d8349) [0x771c31ed8349]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry laminar in runtime table TurbulenceModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2f3013) [0x771c31ef3013]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry RAS in runtime table TurbulenceModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2f30c2) [0x771c31ef30c2]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry LES in runtime table TurbulenceModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2f3171) [0x771c31ef3171]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry Stokes in runtime table laminarModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2f320b) [0x771c31ef320b]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry kEpsilon in runtime table RASModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2f32a5) [0x771c31ef32a5]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry kOmegaSST in runtime table RASModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2f333f) [0x771c31ef333f]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry Smagorinsky in runtime table LESModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2f33d9) [0x771c31ef33d9]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+Duplicate entry kEqn in runtime table LESModel
+[stack trace]
+=============
+#1	platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so(+0x2f346c) [0x771c31ef346c]
+#2	/lib64/ld-linux-x86-64.so.2(+0x49ce) [0x771c41a209ce]
+#3	/lib64/ld-linux-x86-64.so.2(+0x4ab4) [0x771c41a20ab4]
+#4	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d274]
+#5	/lib64/ld-linux-x86-64.so.2(+0xb21e) [0x771c41a2721e]
+#6	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#7	/lib64/ld-linux-x86-64.so.2(+0xb5b8) [0x771c41a275b8]
+#8	/lib/x86_64-linux-gnu/libc.so.6(+0x854b8) [0x771c3b0a34b8]
+#9	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_exception [0x771c3b16d21a]
+#10	/lib/x86_64-linux-gnu/libc.so.6 _dl_catch_error [0x771c3b16d2cf]
+#11	/lib/x86_64-linux-gnu/libc.so.6(+0x84fa7) [0x771c3b0a2fa7]
+#12	/lib/x86_64-linux-gnu/libc.so.6 dlopen [0x771c3b0a3569]
+#13	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, bool) [0x771c3bb94929]
+#14	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlOpen(Foam::fileName const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [0x771c3bb94e0e]
+#15	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::openLibrary(Foam::fileName const&, bool) [0x771c3b83c927]
+#16	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::dlLibraryTable::open(Foam::fileName const&, bool) [0x771c3b83d4b6]
+#17	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObject::New(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b8481ff]
+#18	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjects::timeControl::timeControl(Foam::word const&, Foam::Time const&, Foam::dictionary const&) [0x771c3b85dd70]
+#19	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::read() [0x771c3b84dba3]
+#20	platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so Foam::functionObjectList::adjustTimeStep() [0x771c3b84fa42]
+#21	myTwoPhaseEulerFoam(+0x3f3d0) [0x64ea67d013d0]
+#22	/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x771c3b04524a]
+#23	/lib/x86_64-linux-gnu/libc.so.6 __libc_start_main [0x771c3b045305]
+#24	myTwoPhaseEulerFoam(+0x515c1) [0x64ea67d135c1]
+=============
+fieldAverage fieldAverage1:
+    Restarting averaging for fields:
+        U.air: starting averaging at time 0
+        U.water: starting averaging at time 0
+        alpha.air: starting averaging at time 0
+        p: starting averaging at time 0
+
+Calculating field DDtU1 and DDtU2
+
+
+Starting time loop
+
+Courant Number mean: 6.56644e-06 max: 0.000876142
+Max Ur Courant Number = 0
+deltaT = 0.00012
+Time = 0.00012
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 1.74118e-06  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 1, Final residual = 4.06507e-10, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.999535, Final residual = 1.48023e-08, No Iterations 1000
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.0356934, Final residual = 9.35045e-09, No Iterations 156
+PIMPLE: iteration 2
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000249084  Min(alpha.air) = 0  Max(alpha.air) = 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.985184, Final residual = 3.95426e-12, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.965882, Final residual = 6.89842e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.050388, Final residual = 3.22633e-09, No Iterations 24
+PIMPLE: iteration 3
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 3.55784e-05  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.795143, Final residual = 2.65786e-10, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.263907, Final residual = 1.28764e-09, No Iterations 1
+min T.air 277.844
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.127055, Final residual = 9.28949e-09, No Iterations 148
+ExecutionTime = 14.55 s  ClockTime = 15 s
+
+fieldAverage fieldAverage1:
+    Reading/initialising field U.airMean
+    Reading/initialising field U.waterMean
+    Reading/initialising field alpha.airMean
+    Reading/initialising field pMean
+
+fieldAverage fieldAverage1 write:
+    Calculating averages
+
+Courant Number mean: 0.00199831 max: 0.00211538
+Max Ur Courant Number = 0.0256046
+deltaT = 0.000144
+Time = 0.000264
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 3.80653e-05  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.546198, Final residual = 3.25779e-11, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.403722, Final residual = 1.36446e-09, No Iterations 2
+min T.air 277.844
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.139306, Final residual = 9.89493e-09, No Iterations 186
+PIMPLE: iteration 2
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 6.47186e-05  Min(alpha.air) = 0  Max(alpha.air) = 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0184055, Final residual = 4.27668e-11, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.596638, Final residual = 2.10837e-09, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.145492, Final residual = 9.15058e-09, No Iterations 19
+PIMPLE: iteration 3
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 4.76921e-05  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.241013, Final residual = 4.43336e-11, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.113982, Final residual = 3.92095e-09, No Iterations 1
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.081693, Final residual = 9.18995e-09, No Iterations 147
+ExecutionTime = 23.54 s  ClockTime = 24 s
+
+fieldAverage fieldAverage1 write:
+    Calculating averages
+
+Courant Number mean: 0.00228215 max: 0.00261537
+Max Ur Courant Number = 0.022209
+deltaT = 0.0001728
+Time = 0.0004368
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 8.49072e-05  Min(alpha.air) = 0  Max(alpha.air) = 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.515824, Final residual = 9.35918e-12, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.286606, Final residual = 1.17581e-09, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.105583, Final residual = 4.91533e-09, No Iterations 28
+PIMPLE: iteration 2
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 5.41034e-05  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0985756, Final residual = 2.42329e-09, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.570613, Final residual = 1.95552e-09, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.0759176, Final residual = 9.6112e-09, No Iterations 196
+PIMPLE: iteration 3
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 8.93055e-05  Min(alpha.air) = 0  Max(alpha.air) = 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.125878, Final residual = 2.28519e-12, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.0155826, Final residual = 3.56702e-09, No Iterations 1
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.0371629, Final residual = 8.85088e-09, No Iterations 27
+ExecutionTime = 30.5 s  ClockTime = 31 s
+
+fieldAverage fieldAverage1 write:
+    Calculating averages
+
+Courant Number mean: 0.00262527 max: 0.00364031
+Max Ur Courant Number = 0.0266251
+deltaT = 0.00020736
+Time = 0.00064416
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 9.63779e-05  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.410397, Final residual = 2.96624e-09, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.0653546, Final residual = 8.34922e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.196634, Final residual = 9.85766e-09, No Iterations 243
+PIMPLE: iteration 2
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000111996  Min(alpha.air) = 0  Max(alpha.air) = 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0959443, Final residual = 4.02547e-11, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.0619828, Final residual = 7.98298e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.0181954, Final residual = 9.95675e-09, No Iterations 25
+PIMPLE: iteration 3
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 9.35892e-05  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.117238, Final residual = 1.50572e-09, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.0152847, Final residual = 4.65139e-09, No Iterations 1
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.0224913, Final residual = 9.37886e-09, No Iterations 149
+ExecutionTime = 40.58 s  ClockTime = 41 s
+
+fieldAverage fieldAverage1 write:
+    Calculating averages
+
+Courant Number mean: 0.00306565 max: 0.00362871
+Max Ur Courant Number = 0.0302004
+deltaT = 0.000248832
+Time = 0.000892992
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000120357  Min(alpha.air) = 0  Max(alpha.air) = 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0655466, Final residual = 3.53952e-12, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.0948382, Final residual = 6.80374e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.016883, Final residual = 9.42063e-09, No Iterations 24
+PIMPLE: iteration 2
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 9.63782e-05  Min(alpha.air) = -8.71969e-52  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.428775, Final residual = 1.814e-09, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.0272164, Final residual = 5.98771e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.00800805, Final residual = 9.70423e-09, No Iterations 218
+PIMPLE: iteration 3
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000121656  Min(alpha.air) = 0  Max(alpha.air) = 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.454015, Final residual = 2.5387e-11, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.0256051, Final residual = 4.37386e-09, No Iterations 1
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.00621019, Final residual = 6.03171e-09, No Iterations 17
+ExecutionTime = 48.02 s  ClockTime = 48 s
+
+fieldAverage fieldAverage1 write:
+    Calculating averages
+
+Courant Number mean: 0.00366272 max: 0.00434764
+Max Ur Courant Number = 0.0352258
+deltaT = 0.000298598
+Time = 0.00119159
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000125197  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.496073, Final residual = 9.73047e-10, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.10173, Final residual = 5.49846e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.0177107, Final residual = 9.26085e-09, No Iterations 257
+PIMPLE: iteration 2
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000129999  Min(alpha.air) = 0  Max(alpha.air) = 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.262737, Final residual = 3.67924e-11, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.0367477, Final residual = 4.87502e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.00203459, Final residual = 8.99068e-09, No Iterations 15
+PIMPLE: iteration 3
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000125793  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.132541, Final residual = 2.26422e-10, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.0519708, Final residual = 4.98413e-09, No Iterations 1
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.00234666, Final residual = 9.60453e-09, No Iterations 159
+ExecutionTime = 59.06 s  ClockTime = 60 s
+
+fieldAverage fieldAverage1 write:
+    Calculating averages
+
+Courant Number mean: 0.00450339 max: 0.005217
+Max Ur Courant Number = 0.0655441
+deltaT = 0.000358318
+Time = 0.00154991
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000134781  Min(alpha.air) = 0  Max(alpha.air) = 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0995647, Final residual = 7.71587e-12, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.0746967, Final residual = 4.69321e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.0019889, Final residual = 6.0877e-09, No Iterations 23
+PIMPLE: iteration 2
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000129869  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.212774, Final residual = 1.15124e-10, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.071174, Final residual = 4.17813e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.000745398, Final residual = 9.57872e-09, No Iterations 248
+PIMPLE: iteration 3
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000130866  Min(alpha.air) = 0  Max(alpha.air) = 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0716135, Final residual = 3.91382e-12, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.0568205, Final residual = 7.17513e-09, No Iterations 1
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.000101902, Final residual = 7.08276e-09, No Iterations 15
+ExecutionTime = 66.68 s  ClockTime = 67 s
+
+fieldAverage fieldAverage1 write:
+    Calculating averages
+
+Courant Number mean: 0.00567504 max: 0.0062742
+Max Ur Courant Number = 0.0486663
+deltaT = 0.000429982
+Time = 0.00197989
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000136776  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.165754, Final residual = 1.89294e-11, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.101024, Final residual = 4.77991e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.00282475, Final residual = 9.5469e-09, No Iterations 333
+PIMPLE: iteration 2
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000136736  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0495935, Final residual = 3.2456e-12, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.0251108, Final residual = 4.43955e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.000359994, Final residual = 9.88594e-09, No Iterations 221
+PIMPLE: iteration 3
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000136964  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0345929, Final residual = 1.25523e-12, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.0026787, Final residual = 4.55092e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 4.39214e-05, Final residual = 9.45766e-09, No Iterations 219
+ExecutionTime = 82.93 s  ClockTime = 83 s
+
+fieldAverage fieldAverage1 write:
+    Calculating averages
+
+Courant Number mean: 0.00722854 max: 0.00756846
+Max Ur Courant Number = 0.0715237
+deltaT = 0.000515978
+Time = 0.00249587
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000144272  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.115621, Final residual = 1.10722e-11, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.112224, Final residual = 4.53517e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.00122065, Final residual = 9.84539e-09, No Iterations 315
+PIMPLE: iteration 2
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.00014467  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0609448, Final residual = 2.21813e-12, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.020131, Final residual = 4.25398e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.000247048, Final residual = 9.70298e-09, No Iterations 262
+PIMPLE: iteration 3
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.00014481  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0146207, Final residual = 1.10078e-12, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.00429559, Final residual = 4.26811e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 3.97706e-05, Final residual = 9.47479e-09, No Iterations 231
+ExecutionTime = 99.46 s  ClockTime = 100 s
+
+fieldAverage fieldAverage1 write:
+    Calculating averages
+
+Courant Number mean: 0.00913141 max: 0.00926816
+Max Ur Courant Number = 0.0715633
+deltaT = 0.000619174
+Time = 0.00311504
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.00015421  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.110326, Final residual = 5.11347e-12, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.128966, Final residual = 4.77306e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.00114902, Final residual = 9.4241e-09, No Iterations 231
+PIMPLE: iteration 2
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000154845  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0521871, Final residual = 4.17534e-12, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.0186919, Final residual = 4.47265e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 0.000180033, Final residual = 9.97919e-09, No Iterations 267
+PIMPLE: iteration 3
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000154885  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.00237858, Final residual = 1.07334e-12, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.00440786, Final residual = 4.49486e-10, No Iterations 2
+min T.air 300
+min T.water 350
+GAMG:  Solving for p_rgh, Initial residual = 4.07384e-05, Final residual = 9.61053e-09, No Iterations 229
+ExecutionTime = 115.04 s  ClockTime = 116 s
+
+fieldAverage fieldAverage1 write:
+    Calculating averages
+
+Courant Number mean: 0.0112943 max: 0.0115608
+Max Ur Courant Number = 0.0999484
+deltaT = 0.000743008
+Time = 0.00385805
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.air
+alpha.air volume fraction = 0.000166952  Min(alpha.air) = 0  Max(alpha.air) = 0.124208
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.114456, Final residual = 4.51593e-12, No Iterations 2
+smoothSolver:  Solving for e.water, Initial residual = 0.138541, Final residual = 4.73805e-10, No Iterations 2
+min T.air 300
+min T.water 350

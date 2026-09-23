@@ -26,6 +26,7 @@ surfaceScalarField alpharAUf1
 (
     fvc::interpolate(max(alpha1, phase1.residualAlpha())*rAU1)
 );
+
 surfaceScalarField alpharAUf2
 (
     fvc::interpolate(max(alpha2, phase2.residualAlpha())*rAU2)
