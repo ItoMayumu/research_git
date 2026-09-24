@@ -1,0 +1,12 @@
+pOutlet
+{
+    type            surfaceFieldValue;
+    libs            (fieldFunctionObjects);
+    fields          (p p_rgh);
+    operation       areaAverage;
+    regionType      patch;
+    name            OUTLET;
+    writeControl    writeTime;
+    executeControl  writeTime;
+    writeFields     no;
+}

@@ -20,9 +20,9 @@ startFrom       latestTime;
 
 stopAt          endTime;
 
-endTime         100;
+endTime         19.4946;
 
-deltaT          0.00001;
+deltaT          1e-05;
 
 writeControl    runTime;
 

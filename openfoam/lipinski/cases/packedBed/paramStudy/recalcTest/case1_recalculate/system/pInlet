@@ -1,0 +1,12 @@
+pInlet
+{
+    type            surfaceFieldValue;
+    libs            (fieldFunctionObjects);
+    fields          (p p_rgh);
+    operation       areaAverage;
+    regionType      patch;
+    name            INLET;
+    writeControl    writeTime;
+    executeControl  writeTime;
+    writeFields     no;
+}
