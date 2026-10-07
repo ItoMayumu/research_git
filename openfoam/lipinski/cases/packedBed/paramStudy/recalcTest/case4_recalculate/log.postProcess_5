@@ -9,9 +9,9 @@ Build  : _b8cf4d35-20260127 OPENFOAM=2412 patch=260127 version=2412
 Arch   : "LSB;label=32;scalar=64"
 Exec   : postProcess -func volAvgAlpha -latestTime
 Date   : Sep 24 2026
-Time   : 13:06:51
+Time   : 16:42:48
 Host   : mayumu
-PID    : 1124525
+PID    : 1343076
 I/O    : uncollated
 Case   : /home/mayumu/research/numerical_simulation/openfoam/lipinski/cases/packedBed/paramStudy/recalcTest/case4_recalculate
 nProcs : 1
@@ -25,18 +25,18 @@ Create time
 --> FOAM Warning : 
     From void Foam::Time::setControls()
     in file db/Time/Time.C at line 244
-    Increasing the timePrecision from 6 to 17 to support the formatting of the current time directory 12.499713561368669
+    Increasing the timePrecision from 6 to 17 to support the formatting of the current time directory 17.000198432352605
 
-Create mesh for time = 12.499713561368669
+Create mesh for time = 17.000198432352605
 
-Time = 12.499713561368669
+Time = 17.000198432352605
 
 Reading fields:
     volScalarField: alpha.air
 
 Executing functionObjects
 volFieldValue volAvgAlpha write:
-    volAverage(porosity1) of alpha.air = 0.357693
+    volAverage(porosity1) of alpha.air = 0.35694
 
 
 End

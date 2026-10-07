@@ -1,0 +1,12 @@
+volAvgAlpha
+{
+    type            volFieldValue;
+    libs            (fieldFunctionObjects);
+    fields          (alpha.air);
+    operation       volAverage;
+    regionType      cellZone;
+    name            porosity1;
+    writeControl    writeTime;
+    executeControl  writeTime;
+    writeFields     no;
+}
