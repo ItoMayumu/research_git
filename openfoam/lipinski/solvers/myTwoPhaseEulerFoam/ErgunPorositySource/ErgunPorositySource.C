@@ -72,7 +72,9 @@ void Foam::fv::ErgunPorositySource::addSup
 
         const scalar Cd = mu[celli]*D + rho[celli]*mag(U[celli])*F;
 
-        Udiag[celli] += V[celli]*Cd;
+        // fvOptions are on the RHS of the momentum equation (LHS == opt),
+        // so a resistance enters with a negative sign (cf. explicitPorositySource)
+        Udiag[celli] -= V[celli]*Cd;
 
         CdMin = min(CdMin, Cd);
         CdMax = max(CdMax, Cd);
