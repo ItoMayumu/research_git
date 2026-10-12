@@ -22,7 +22,7 @@ surfaceScalarField alphaRhof20
 );
 
 // Drag coefficient
-surfaceScalarField Kdf("Kdf", fluid.Kdf());
+surfaceScalarField Kdf("Kdf", fluid.Kdf()*fvc::interpolate(dragMask));
 
 // Virtual-mass coefficient
 surfaceScalarField Vmf("Vmf", fluid.Vmf());

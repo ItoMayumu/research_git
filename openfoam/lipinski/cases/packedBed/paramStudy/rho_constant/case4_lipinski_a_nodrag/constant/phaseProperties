@@ -71,8 +71,42 @@ aspectRatio
     }
 );
 
+// 層内(porosity1)だけ相間抗力を無効化（myTwoPhaseEulerFoam の dragMask）
+dragFreeCellZones (porosity1);
+
 drag
 (
+    (air in water)
+    {
+        type            SchillerNaumann;
+        residualRe      1e-3;
+        swarmCorrection
+        {
+            type        none;
+        }
+    }
+
+    (water in air)
+    {
+        type            SchillerNaumann;
+        residualRe      1e-3;
+        swarmCorrection
+        {
+            type        none;
+        }
+    }
+
+    (air and water)
+    {
+        type            segregated;
+        residualAlpha   1e-6;
+        m               0.5;
+        n               8;
+        swarmCorrection
+        {
+            type        none;
+        }
+    }
 );
 
 virtualMass

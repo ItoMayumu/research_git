@@ -21,6 +21,86 @@ dimensionedScalar pMin
     fluid
 );
 
+// Interphase drag is multiplied by dragMask. In the cellZones listed in
+// phaseProperties "dragFreeCellZones" (e.g. the packed bed, to compare with
+// drag-free 1D models such as Lipinski) the drag is switched off, but only
+// where both phases are really present (min(alpha1, alpha2) above
+// "dragFreeAlphaMin", ramped up to 2*dragFreeAlphaMin). In nearly
+// single-phase cells the drag must stay on: every term of the momentum
+// equation of the vanishing phase is scaled by its alpha, and without drag
+// its velocity is no longer determined (it ran away to O(100 m/s)).
+// dragMask is updated in updateDragMask.H
+const scalar dragFreeAlphaMin
+(
+    fluid.getOrDefault<scalar>("dragFreeAlphaMin", 0.05)
+);
+
+volScalarField dragFreeZone
+(
+    IOobject
+    (
+        "dragFreeZone",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh,
+    dimensionedScalar("zero", dimless, 0),
+    fvPatchFieldBase::zeroGradientType()
+);
+
+volScalarField dragMask
+(
+    IOobject
+    (
+        "dragMask",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh,
+    dimensionedScalar("one", dimless, 1),
+    fvPatchFieldBase::zeroGradientType()
+);
+
+{
+    const wordRes dragFreeZones
+    (
+        fluid.getOrDefault<wordRes>("dragFreeCellZones", wordRes())
+    );
+
+    if (!dragFreeZones.empty())
+    {
+        const labelList zoneIDs(mesh.cellZones().indices(dragFreeZones));
+
+        if (zoneIDs.empty())
+        {
+            FatalErrorInFunction
+                << "dragFreeCellZones " << dragFreeZones
+                << " match no cellZone. Available: "
+                << mesh.cellZones().names() << exit(FatalError);
+        }
+
+        label nCells = 0;
+        for (const label zonei : zoneIDs)
+        {
+            for (const label celli : mesh.cellZones()[zonei])
+            {
+                dragFreeZone[celli] = 1;
+                ++nCells;
+            }
+        }
+        dragFreeZone.correctBoundaryConditions();
+
+        Info<< "Interphase drag switched off in cellZones " << dragFreeZones
+            << " (" << returnReduce(nCells, sumOp<label>()) << " cells)"
+            << " where min(alpha1, alpha2) > " << dragFreeAlphaMin << nl
+            << endl;
+    }
+}
+
 #include "gh.H"
 
 Info<< "Reading field p_rgh\n" << endl;

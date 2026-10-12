@@ -103,6 +103,7 @@ int main(int argc, char *argv[])
             fluid.solve();
             fluid.correct();
 
+            #include "updateDragMask.H"
             #include "contErrs.H"
 
             if (faceMomentum)
